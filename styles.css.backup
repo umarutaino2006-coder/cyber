@@ -103,11 +103,11 @@ button {
 }
 
 .summary {
- margin-bottom: 1rem;
- padding: 1rem;
+  margin-bottom: 1.75rem;
+  padding: 1.5rem 1.5rem;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.07);
- border-radius: 12px;
+  border-radius: 18px;
 }
 
 .summary h2 {
@@ -119,8 +119,8 @@ button {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
- gap: 0.5rem;
- margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .category-nav {
@@ -155,7 +155,7 @@ button {
 }
 
 .category-card {
- margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .category-card h3 {
@@ -169,16 +169,16 @@ button {
 
 .tool-grid {
   display: grid;
- grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
- gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
 .tool-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
- border-radius: 12px;
- padding: 1rem;
- transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  border-radius: 18px;
+  padding: 1.35rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tool-card h3 {
@@ -242,11 +242,11 @@ button {
 
 /* Example block styling: make code snippets readable and neat */
 .example {
- margin-top: 0.6rem;
- padding: 0.6rem;
+  margin-top: 0.85rem;
+  padding: 0.85rem;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   border: 1px solid rgba(255,255,255,0.035);
- border-radius: 10px;
+  border-radius: 12px;
 }
 
 .example h4 {
@@ -285,7 +285,7 @@ button {
 }
 
 .tool-card .example + .example {
- margin-top: 0.6rem;
+  margin-top: 0.95rem;
 }
 
 .tool-card strong {
@@ -293,9 +293,9 @@ button {
 }
 
 .tool-details {
- margin-top: 0.6rem;
+  margin-top: 1rem;
   border-top: 1px solid rgba(255,255,255,0.08);
- padding-top: 0.6rem;
+  padding-top: 1rem;
 }
 
 .tool-details p,
@@ -344,9 +344,9 @@ button {
 }
 
 .no-results {
- padding: 1rem;
+  padding: 2rem 1.5rem;
   background: rgba(255,255,255,0.03);
- border-radius: 12px;
+  border-radius: 18px;
   text-align: center;
   color: var(--muted);
 }

